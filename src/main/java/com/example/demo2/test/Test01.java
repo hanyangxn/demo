@@ -7,7 +7,6 @@ public class Test01 {
         List<String> codeList = AnalysisDimension.getCodeList();
         String nameByCode = AnalysisDimension.getNameByCode("1");
         System.out.println(nameByCode);
-        //1231
         System.out.println(codeList);
     }
 }
