@@ -1,6 +1,5 @@
 package com.example.demo2.controller;
 
-import com.example.demo2.annotation.ParamCheck;
 import com.example.demo2.annotation.SystemLog;
 import com.example.demo2.annotation.Test;
 import com.example.demo2.dto.TypeService;
