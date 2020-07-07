@@ -6,11 +6,12 @@ import com.example.demo2.service.TestService;
 import com.example.demo2.util.CONST;
 import com.example.demo2.util.ResultDto;
 import org.springframework.context.MessageSource;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
-@Service
+@Service("test")
 public class TestServiceImpl implements TestService {
 
     @Resource
@@ -18,6 +19,6 @@ public class TestServiceImpl implements TestService {
 
     @Override
     public ResultDto<String> test(String name) throws ManagementCockpitException,Exception {
-        return MsgUtil.success(name, CONST.RETURN_OK,msgsrc);
+        return MsgUtil.success(name.concat("1"), CONST.RETURN_OK,msgsrc);
     }
 }
