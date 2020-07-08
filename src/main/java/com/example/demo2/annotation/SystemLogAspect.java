@@ -18,7 +18,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * @author xlqi
+ * @author
  * 记录日志-不影响性能下同步记录
  * 可异步
  */

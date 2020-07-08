@@ -1,6 +1,5 @@
 package com.example.demo2.dto;
 
-import com.example.demo2.result.TypeService;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.io.Serializable;
