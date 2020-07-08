@@ -9,7 +9,8 @@ import org.slf4j.LoggerFactory;
 import java.lang.reflect.*;
 
 /**
- * @author xlqi
+ * @author hy
+ * 反射工具类
  * @since 2018/11/5 17:21
  */
 public class ReflectionUtil {
