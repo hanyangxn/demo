@@ -1,5 +1,6 @@
 package com.example.demo2.controller;
 
+import com.example.demo2.annotation.ParamCheck;
 import com.example.demo2.annotation.SystemLog;
 import com.example.demo2.annotation.Test;
 import com.example.demo2.dto.TypeService;
@@ -35,8 +36,8 @@ public class TestController {
     @Autowired
     private Map<String, TestService> events;
 
-    //    @ParamCheck({"name:name不能为空","age<=10:age 必须大于10"})
-    @Test
+    @ParamCheck({"name:name不能为空","age<=10:age 必须大于10"})
+//    @Test
     @RequestMapping("/we")
     @SystemLog
     public ResultDto<?> test(@RequestBody UserDto userDto) {
@@ -62,6 +63,7 @@ public class TestController {
             TypeService type = userDto.getType();
             logger.info(type.getName());
             TestService testService = events.get(type.getName());
+//            return (ResultDto) ReflectionUtil.invokeMethod(testService, "test",new Class[]{String.class}, new Object[]{userDto.getName()});
             return (ResultDto) ReflectionUtil.invokeMethodByName(testService, "test", new Object[]{userDto.getName()});
         } catch (ManagementCockpitException e) {
             logger.error(e.getCode() + ":" + e.getMessage());
