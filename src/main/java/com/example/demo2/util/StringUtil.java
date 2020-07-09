@@ -277,6 +277,7 @@ public class StringUtil {
 	 * @param string 多个字符串列表。
 	 * @return 多个字符串连接起来的单个字符串。
 	 */
+
 	public static String concat(String... string) {
 		int length = 0;
 		// 计算StringBuilder初始容量
