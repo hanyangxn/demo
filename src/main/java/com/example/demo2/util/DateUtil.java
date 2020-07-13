@@ -1,15 +1,51 @@
 package com.example.demo2.util;
 
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.DateFormatUtils;
+
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 日期工具方法类。
  */
 public class DateUtil {
+	/**
+	 * 仅显示年月日，例如 2015-08-11。
+	 */
+	public static final String DATE_FORMAT = "yyyy-MM-dd";
+
+	/**
+	 * 仅显示年月，例如 2015-08。
+	 */
+	public static final String DATE_YYYY_MM = "yyyy-MM";
+
+	/**
+	 * 仅显示年，例如 2015。
+	 */
+	public static final String DATE_YYYY = "yyyy";
+
+	/**
+	 * 仅显示年月日，例如 20150811。
+	 */
+	public static final String DATE_FORMAT2 = "yyyyMMdd";
+	/**
+	 * 显示年月日时分秒，例如 2015-08-11 09:51:53。
+	 */
+	public static final String DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+
+	/**
+	 * 时间格式集合
+	 * */
+	public static final String[] patterns = {"yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyy/MM/dd","yyyy/MM/dd HH:mm:ss", "yyyyMMdd", "yyyyMM", "yyyy-MM"};
+
 	/**
 	 * 格式化日期
 	 * 
@@ -93,7 +129,7 @@ public class DateUtil {
 	/**
 	 * 获取指定日期的年部分值。
 	 * 
-	 * @param date 日期。
+	 * @param date 日期。LocalDate
 	 * @return 年部分值。
 	 */
 	public static int yearOf(Date date) {
@@ -491,5 +527,204 @@ public class DateUtil {
 			year = Integer.toString(Integer.parseInt(year) - 1);
 			return year + "1231";
 		}
+	}
+
+	/**
+	 * 获取当前时间指定格式下的字符串。
+	 * @param pattern
+	 *            转化后时间展示的格式，例如"yyyy-MM-dd"，"yyyy-MM-dd HH:mm:ss"等
+	 * @return String 格式转换之后的时间字符串.
+	 * @since 1.0
+	 */
+	public static String getDate(String pattern) {
+		return DateFormatUtils.format(new Date(), pattern);
+	}
+
+
+	/**
+	 * 得到当前日期字符串。
+	 * @return String 日期字符串，例如2015-08-11
+	 * @since 1.0
+	 */
+	public static String getDateForNow() {
+		return getDate(DateUtil.DATE_FORMAT);
+	}
+
+	/**
+	 * 得到日期字符串。
+	 * @return String 日期字符串，例如20150811
+	 * @since 1.0
+	 */
+	public static String getDateStr(LocalDate localDate) {
+		return DateFormatUtils.format(localDate2Date(localDate), DateUtil.DATE_FORMAT2);
+	}
+
+	/**
+	 * 得到当前日期字符串。
+	 * @return String 日期字符串，例如2015-08-11
+	 * @since 1.0
+	 */
+	public static String getDateForNow2() {
+		return getDate(DateUtil.DATE_FORMAT2);
+	}
+
+	/**
+	 * LocalDate转Date。
+	 * @param localDate 日期
+	 * @return 返回 Date 类型的日期。
+	 */
+	public static Date localDate2Date(LocalDate localDate) {
+		if (null == localDate) {
+			return null;
+		}
+		ZonedDateTime zonedDateTime = localDate.atStartOfDay(ZoneId.systemDefault());
+		return Date.from(zonedDateTime.toInstant());
+	}
+
+	/**
+	 * String转localDate。
+	 * @param dateString 20200305
+	 * @return LocalDate
+	 */
+	public static LocalDate stringToLocalDate(String dateString) {
+		Date parse = null;
+		try {
+			parse = new SimpleDateFormat("yyyyMMdd").parse(dateString);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		String localDateString = new SimpleDateFormat("yyyy-MM-dd").format(parse);
+		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		return LocalDate.parse(localDateString, fmt);
+	}
+
+	/**
+	 * String转localDate。
+	 * @param dateString 20200305
+	 * @param pattern yyyy-MM-dd & other
+	 * @return LocalDate
+	 */
+	public static LocalDate stringToLocalDate(String dateString, String pattern) {
+		Date parse = null;
+		try {
+			parse = new SimpleDateFormat(pattern).parse(dateString);
+			String localDateString = new SimpleDateFormat(pattern).format(parse);
+			DateTimeFormatter fmt = DateTimeFormatter.ofPattern(pattern);
+			return LocalDate.parse(localDateString, fmt);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	/**
+	 * 数据为空当前查询时间减去1 返回
+	 * @param curveDate
+	 * @return
+	 */
+	public static String parseStringDateToCurveDate(String curveDate){
+		Date parse = null;
+		String curveDateStr = "";
+		try {
+			if (StringUtils.isNotBlank(curveDate)) {
+				// 做判断不一样的日期格式
+				parse = curveDate.indexOf("-") != -1 ?
+						new SimpleDateFormat(DATE_FORMAT).parse(curveDate) : new SimpleDateFormat(DATE_FORMAT2).parse(curveDate);
+				curveDateStr = new SimpleDateFormat(DATE_FORMAT).format(parse);
+			}
+		} catch (ParseException e) {
+			throw new RuntimeException("parseStringDateToCurveDate fail msg: {} ", e);
+		}
+		return curveDateStr;
+	}
+
+	/**
+	 * 格式化日期 传入yyyy-MM-dd
+	 * 返回 Date
+	 * */
+	public static Date getDateByString(String date) throws ParseException {
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATE_FORMAT);
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(org.apache.commons.lang3.time.DateUtils.parseDate(date, DATE_FORMAT));
+		return calendar.getTime();
+	}
+
+	/**
+	 * 获取开始和结束时间之间的时间集合
+	 * @param startDate 开始时间
+	 * @param endDate 结束时间
+	 * @return List<String> 返回时间集合(包含startDate 和 endDate)
+	 * */
+	public static List<String> getBetweenDates(String startDate, String endDate) {
+		List<String> result = new ArrayList<String>();
+		try {
+			// 将开始和结束时间
+			result.add(startDate);
+			Calendar tempStart = Calendar.getInstance();
+			tempStart.setTime(getDateByString(startDate));
+			tempStart.add(Calendar.DAY_OF_YEAR, 1);
+			Calendar tempEnd = Calendar.getInstance();
+			tempEnd.setTime(getDateByString(endDate));
+			while (tempStart.before(tempEnd)) {
+				result.add(DateFormatUtils.format(tempStart.getTime(), DateUtil.DATE_FORMAT));
+				tempStart.add(Calendar.DAY_OF_YEAR, 1);
+			}
+			result.add(endDate);
+		} catch (Exception e) {
+			throw new RuntimeException("parse date error con't not calculate date range", e);
+		}
+		return result;
+	}
+
+	/**
+	 * 判断是否为指定日期 并转换
+	 * 格式：yyyy-MM-dd yyyy-MM-dd HH:mm:ss yyyyMMdd
+	 * @date 2020/05/27
+	 * @return 不是时间格式返回null
+	 */
+	public static Date isValidDateAllPattern(String str) {
+		try {
+			return org.apache.commons.lang3.time.DateUtils.parseDate(str, patterns);
+		} catch (ParseException e) {
+			return null;
+		}
+	}
+
+	/**
+	 *  Date 转 LocalDate
+	 * @param date 日期
+	 * @return LocalDate 时间
+	 * */
+	public static LocalDate dateToLocalDate(Date date) {
+		Instant instant = date.toInstant();
+		ZoneId zone = ZoneId.systemDefault();
+		LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, zone);
+		LocalDate localDate = localDateTime.toLocalDate();
+		return localDate;
+	}
+
+	/**
+	 * String 的日期转换为 LocalDate
+	 * 格式：yyyy-MM-dd yyyy-MM-dd HH:mm:ss yyyyMMdd ....
+	 * @date 2020/05/27
+	 * @return 不是时间格式返回null
+	 */
+	public static LocalDate strToLocalDateAllPattern(String str) {
+		try {
+			return dateToLocalDate(org.apache.commons.lang3.time.DateUtils.parseDate(str, patterns));
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	/**
+	 * LocalDate 转 String
+	 * @param date 日期
+	 * @param pattern 日期格式
+	 * @return String
+	 */
+	public static String localDateToString(LocalDate date, String pattern) {
+		DateTimeFormatter fmt = DateTimeFormatter.ofPattern(pattern);
+		String dateStr = date.format(fmt);
+		return dateStr;
 	}
 }
