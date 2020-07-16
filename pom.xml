@@ -82,6 +82,12 @@
             <version>1.2.70</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.scireum</groupId>
+            <artifactId>parsii</artifactId>
+            <version>1.5</version>
+        </dependency>
+
 
     </dependencies>
 
