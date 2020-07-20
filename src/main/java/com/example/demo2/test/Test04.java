@@ -9,6 +9,8 @@ import parsii.eval.Parser;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Test04 {
     public static void main(String[] args) throws Exception {
@@ -33,6 +35,17 @@ public class Test04 {
         }
         Expression expr = Parser.parse("146/492");
         System.out.println(new BigDecimal(expr.evaluate()).multiply(new BigDecimal(100)).setScale(2,BigDecimal.ROUND_HALF_UP));
+
+
+        String concat = Stream.of("A", "B", "C", "D").reduce("", String::concat);
+        String collect = Stream.of("A", "B", "C", "D").collect(Collectors.joining(","));
+        System.out.println(concat);
+        System.out.println(collect);
+
+        System.out.println(Stream.of(1, 3, 4).collect(Collectors.reducing(1, x -> x + 1, (result, b) -> {
+            System.out.println(result + "-" + b);
+            return result * b;
+        })));
 
     }
 }
