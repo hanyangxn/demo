@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo2.mapper.AindexeodpricesMapper">
+    <resultMap id="BaseResultMap" type="com.example.demo2.domain.Aindexeodprices">
+        <!--@mbg.generated-->
+        <!--@Table aindexeodprices-->
+        <id column="S_INFO_WINDCODE" property="sInfoWindcode"/>
+        <result column="OBJECT_ID" property="objectId"/>
+        <result column="TRADE_DT" property="tradeDt"/>
+        <result column="CRNCY_CODE" property="crncyCode"/>
+        <result column="S_DQ_PRECLOSE" property="sDqPreclose"/>
+        <result column="S_DQ_OPEN" property="sDqOpen"/>
+        <result column="S_DQ_HIGH" property="sDqHigh"/>
+        <result column="S_DQ_LOW" property="sDqLow"/>
+        <result column="S_DQ_CLOSE" property="sDqClose"/>
+        <result column="S_DQ_CHANGE" property="sDqChange"/>
+        <result column="S_DQ_PCTCHANGE" property="sDqPctchange"/>
+        <result column="S_DQ_VOLUME" property="sDqVolume"/>
+        <result column="S_DQ_AMOUNT" property="sDqAmount"/>
+        <result column="SEC_ID" property="secId"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        S_INFO_WINDCODE, OBJECT_ID, TRADE_DT, CRNCY_CODE, S_DQ_PRECLOSE, S_DQ_OPEN, S_DQ_HIGH,
+        S_DQ_LOW, S_DQ_CLOSE, S_DQ_CHANGE, S_DQ_PCTCHANGE, S_DQ_VOLUME, S_DQ_AMOUNT, SEC_ID
+    </sql>
+    <select id="selectByWindCode" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        s_info_windcode,
+        trade_dt,
+        s_dq_close
+        from
+        wind_user.aindexeodprices
+        <where>
+            <if test = "sInfoWindcode != null and sInfoWindcode != '' ">
+                s_info_windcode like #{sInfoWindcode}
+            </if>
+            <if test = "startDate != null and endDate != null" >
+                AND (trade_dt &gt;= #{startDate} AND trade_dt &lt;= #{endDate})
+            </if>
+            order by trade_dt asc
+        </where>
+    </select>
+</mapper>

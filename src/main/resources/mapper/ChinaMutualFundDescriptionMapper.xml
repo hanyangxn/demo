@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo2.mapper.ChinaMutualFundDescriptionMapper">
+    <resultMap id="BaseResultMap" type="com.example.demo2.domain.ChinaMutualFundDescription">
+        <result column="object_id" property="objectId" />
+        <result column="f_info_windcode" property="fInfoWindcode" />
+        <result column="f_info_front_code" property="fInfoFrontCode" />
+        <result column="f_info_backend_code" property="fInfoBackendCode" />
+        <result column="f_info_fullname" property="fInfoFullname" />
+        <result column="f_info_name" property="fInfoName" />
+        <result column="f_info_corp_fundmanagementcomp" property="fInfoCorpFundmanagementcomp" />
+        <result column="f_info_custodianbank" property="fInfoCustodianbank" />
+        <result column="f_info_firstinvesttype" property="fInfoFirstinvesttype" />
+        <result column="f_info_setupdate" property="fInfoSetupdate" />
+        <result column="f_info_maturitydate" property="fInfoMaturitydate" />
+        <result column="f_issue_totalunit" property="fIssueTotalunit" />
+        <result column="f_info_managementfeeratio" property="fInfoManagementfeeratio" />
+        <result column="f_info_custodianfeeratio" property="fInfoCustodianfeeratio" />
+        <result column="crny_code" property="crnyCode" />
+        <result column="f_info_ptmyear" property="fInfoPtmyear" />
+        <result column="f_issue_oef_startdateinst" property="fIssueOefStartdateinst" />
+        <result column="f_issue_oef_dnddateinst" property="fIssueOefDnddateinst" />
+        <result column="f_info_parvalue" property="fInfoParvalue" />
+        <result column="f_info_trusttype" property="fInfoTrusttype" />
+        <result column="f_info_trustee" property="fInfoTrustee" />
+        <result column="f_pchredm_pchstartdate" property="fPchredmPchstartdate" />
+        <result column="f_info_redmstartdate" property="fInfoRedmstartdate" />
+        <result column="f_info_minbuyamount" property="fInfoMinbuyamount" />
+        <result column="f_info_expectedrateofreturn" property="fInfoExpectedrateofreturn" />
+        <result column="f_info_issuingplace" property="fInfoIssuingplace" />
+        <result column="f_info_benchmark" property="fInfoBenchmark" />
+        <result column="f_info_status" property="fInfoStatus" />
+        <result column="f_info_restrictedornot" property="fInfoRestrictedornot" />
+        <result column="f_info_structuredornot" property="fInfoStructuredornot" />
+        <result column="f_info_exchmarket" property="fInfoExchmarket" />
+        <result column="f_info_firstinveststyle" property="fInfoFirstinveststyle" />
+        <result column="f_info_issuedate" property="fInfoIssuedate" />
+        <result column="f_info_type" property="fInfoType" />
+        <result column="f_info_isinitial" property="fInfoIsinitial" />
+        <result column="f_info_pinyin" property="fInfoPinyin" />
+        <result column="f_info_investscope" property="fInfoInvestscope" />
+        <result column="f_info_investobject" property="fInfoInvestobject" />
+        <result column="f_info_investconception" property="fInfoInvestconception" />
+        <result column="f_info_decision_basis" property="fInfoDecisionBasis" />
+        <result column="is_indexfund" property="isIndexfund" />
+        <result column="f_info_delistdate" property="fInfoDelistdate" />
+        <result column="f_info_corp_fundmanagementid" property="fInfoCorpFundmanagementid" />
+        <result column="f_info_custodianbankid" property="fInfoCustodianbankid" />
+        <result column="max_num_holder" property="maxNumHolder" />
+        <result column="max_num_coltarget" property="maxNumColtarget" />
+        <result column="f_pchredm_pchminamt" property="fPchredmPchminamt" />
+        <result column="f_pchredm_pchminamt_ex" property="fPchredmPchminamtEx" />
+        <result column="f_info_listdate" property="fInfoListdate" />
+        <result column="f_info_anndate" property="fInfoAnndate" />
+        <result column="f_closed_operation_period" property="fClosedOperationPeriod" />
+        <result column="f_closed_operation_interval" property="fClosedOperationInterval" />
+        <result column="f_info_registrant" property="fInfoRegistrant" />
+        <result column="f_personal_startdateind" property="fPersonalStartdateind" />
+        <result column="f_personal_enddateind" property="fPersonalEnddateind" />
+        <result column="f_info_fund_id" property="fInfoFundId" />
+        <result column="f_sales_service_rate" property="fSalesServiceRate" />
+        <result column="f_investment_area" property="fInvestmentArea" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+		object_id, f_info_windcode, f_info_front_code, f_info_backend_code, f_info_fullname, f_info_name, f_info_corp_fundmanagementcomp, f_info_custodianbank, f_info_firstinvesttype, f_info_setupdate, f_info_maturitydate, f_issue_totalunit, f_info_managementfeeratio, f_info_custodianfeeratio, crny_code, f_info_ptmyear, f_issue_oef_startdateinst, f_issue_oef_dnddateinst, f_info_parvalue, f_info_trusttype, f_info_trustee, f_pchredm_pchstartdate, f_info_redmstartdate, f_info_minbuyamount, f_info_expectedrateofreturn, f_info_issuingplace, f_info_benchmark, f_info_status, f_info_restrictedornot, f_info_structuredornot, f_info_exchmarket, f_info_firstinveststyle, f_info_issuedate, f_info_type, f_info_isinitial, f_info_pinyin, f_info_investscope, f_info_investobject, f_info_investconception, f_info_decision_basis, is_indexfund, f_info_delistdate, f_info_corp_fundmanagementid, f_info_custodianbankid, max_num_holder, max_num_coltarget, f_pchredm_pchminamt, f_pchredm_pchminamt_ex, f_info_listdate, f_info_anndate, f_closed_operation_period, f_closed_operation_interval, f_info_registrant, f_personal_startdateind, f_personal_enddateind, f_info_fund_id, f_sales_service_rate, f_investment_area
+	</sql>
+
+    <select id="getFundByWindcode" resultMap="BaseResultMap" parameterType="com.example.demo2.domain.ChinaMutualFundDescription">
+        select
+        <include refid="Base_Column_List" />
+        from wind_user.chinamutualfunddescription
+        where f_info_windcode like #{fInfoWindcode}
+    </select>
+
+    <!-- add by 2020/06/17 xlqi start -->
+    <select id="selectFundInfoByWindcode"  resultMap="BaseResultMap">
+        select
+        f_info_windcode,
+        f_info_fullname,
+        f_info_name,
+        f_info_setupdate,
+        f_info_maturitydate
+        from
+        wind_user.chinamutualfunddescription
+        <where>
+            <if test = "windCode != null and windCode != '' ">
+                f_info_windcode like #{windCode}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectFuzzyFundInfoByWindcode"  resultMap="BaseResultMap">
+        select
+        f_info_windcode,
+        f_info_fullname,
+        f_info_name,
+        f_info_setupdate,
+        f_info_maturitydate,
+        f_info_firstinvesttype,
+        f_info_firstinveststyle
+        from
+        wind_user.chinamutualfunddescription
+        <where>
+            <if test = "windCode != null and windCode != '' ">
+                (f_info_windcode like UPPER(#{windCode})
+                or
+                f_info_name like #{windCode}
+                or
+                f_info_name like #{windCode})
+            </if>
+        </where>
+        limit 10
+    </select>
+    <!-- add by 2020/06/17 xlqi end -->
+
+</mapper>

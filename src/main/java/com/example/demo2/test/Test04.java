@@ -1,6 +1,6 @@
 package com.example.demo2.test;
 
-import com.example.demo2.dto.FundTypeForPeerPerformance;
+import com.example.demo2.emun.FundTypeForPeerPerformance;
 import com.example.demo2.exception.ManagementCockpitException;
 import com.example.demo2.util.DateUtil;
 import parsii.eval.Expression;

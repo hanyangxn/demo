@@ -35,14 +35,14 @@ public class SystemLogAspect {
 
     @Around("systemLogPointCut()")
     public Object systemLogAround(ProceedingJoinPoint point) throws Throwable {
-        long beginTime = System.currentTimeMillis();
+        Long beginTime = System.currentTimeMillis();
         Object result = point.proceed();
-        long time = System.currentTimeMillis() - beginTime;
+        Long time = System.currentTimeMillis() - beginTime;
         outputSysLog(point, time);
         return result;
     }
 
-    public void outputSysLog(ProceedingJoinPoint joinPoint, long time) {
+    public void outputSysLog(ProceedingJoinPoint joinPoint, Long time) {
         LocalVariableTableParameterNameDiscoverer localVariable = new LocalVariableTableParameterNameDiscoverer();
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         String className = joinPoint.getTarget().getClass().getName();

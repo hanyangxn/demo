@@ -239,7 +239,7 @@ public class ReflectionUtil {
     /**
      * 通过反射, 获得Class定义中声明的父类的泛型参数的类型. 如无法找到, 返回Object.class.
      * <p>
-     * 如public UserDao extends HibernateDao<User,Long>
+     * 如public UserDao extends HibernateDao<User,BigDecimal>
      *
      * @param clazz clazz The class to introspect
      * @param index the Index of the generic ddeclaration,start from 0.

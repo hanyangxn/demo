@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class ResultDto<T> implements Serializable {
 
-	private static final long serialVersionUID = 7098398557300885180L;
+	private static final Long serialVersionUID = 7098398557300885180L;
 
 	private String code;
 	private String msg;

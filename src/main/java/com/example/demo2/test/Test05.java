@@ -1,11 +1,12 @@
 package com.example.demo2.test;
 
-import com.example.demo2.annotation.Test;
+import com.example.demo2.domain.Test;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -38,9 +39,31 @@ public class Test05 {
         Long test = test(100L, x -> x + 200L);
         System.out.println(test);
         Function<BigDecimal, BigDecimal> fun = v -> v.multiply(new BigDecimal(100.0));
-        Function<BigDecimal, BigDecimal> fun2 = v -> v.divide (new BigDecimal(1000.0));
+        Function<BigDecimal, BigDecimal> fun2 = v -> v.divide(new BigDecimal(1000.0));
         BigDecimal apply = fun.andThen(fun2).apply(new BigDecimal(20));
-        System.out.println("apply==>>:"+apply);
+        System.out.println("apply==>>:" + apply);
+
+
+//        String str = null;
+//        Optional<String> str1 = Optional.ofNullable(str);
+//        String str2 = Optional.ofNullable(str1.get()).orElse("ss");
+//        System.out.println(str2);
+
+
+
+        com.example.demo2.domain.Test.Country country = new com.example.demo2.domain.Test.Country();
+        country.setId(12);
+        com.example.demo2.domain.Test.Address address = new com.example.demo2.domain.Test.Address();
+        address.setCountry(country);
+        com.example.demo2.domain.Test test1 = new com.example.demo2.domain.Test();
+        test1.setAddress(null);
+        Integer integer = Optional.ofNullable(test1)
+                .map(Test::getAddress)
+                .map(Test.Address::getCountry)
+                .map(Test.Country::getId)
+                .orElse(55);
+        System.out.println(integer);
+
 
 
     }

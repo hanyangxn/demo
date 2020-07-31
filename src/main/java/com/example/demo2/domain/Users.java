@@ -15,7 +15,7 @@ public class Users implements Serializable {
 
     private Integer age;
 
-    private static final long serialVersionUID = 1L;
+    private static final Long serialVersionUID = 1L;
 
     public Integer getUid() {
         return uid;

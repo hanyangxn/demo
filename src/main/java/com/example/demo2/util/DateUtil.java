@@ -3,6 +3,7 @@ package com.example.demo2.util;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -89,7 +90,7 @@ public class DateUtil {
 	 * @param time 时间戳值。
 	 * @return 转换后的Timestamp对象。
 	 */
-	public static Timestamp getTimestamp(long time) {
+	public static Timestamp getTimestamp(Long time) {
 		return new Timestamp(time);
 	}
 
@@ -271,10 +272,10 @@ public class DateUtil {
 	 * @param milliSecs 毫秒数。
 	 * @return 格式化后的文本。
 	 */
-	public static String format(long milliSecs) {
-		long h = milliSecs / 3600000, hm = milliSecs % 3600000;
-		long m = hm / 60000, mm = hm % 60000;
-		long s = mm / 1000, sm = mm % 1000;
+	public static String format(Long milliSecs) {
+		Long h = milliSecs / 3600000, hm = milliSecs % 3600000;
+		Long m = hm / 60000, mm = hm % 60000;
+		Long s = mm / 1000, sm = mm % 1000;
 		return StringUtil.concat(Long.toString(h), ":", Long.toString(m), ":", Long.toString(s), ".",
 				Long.toString(sm));
 	}
@@ -286,7 +287,7 @@ public class DateUtil {
 	 * @param days 增加的天数。
 	 * @return 增加天数后的日期。
 	 */
-	public static Date incDay(Date date, long days) {
+	public static Date incDay(Date date, Long days) {
 		return new Date(date.getTime() + 86400000 * days);
 	}
 
@@ -297,7 +298,7 @@ public class DateUtil {
 	 * @param seconds 增加的秒数。
 	 * @return 增加秒数后的日期。
 	 */
-	public static Date incSecond(Date date, long seconds) {
+	public static Date incSecond(Date date, Long seconds) {
 		return new Date(date.getTime() + 1000 * seconds);
 	}
 
@@ -405,7 +406,7 @@ public class DateUtil {
 	 * @param endDate
 	 * @return
 	 */
-	public static long daysOfTwo(Date startDate, Date endDate){
+	public static Long daysOfTwo(Date startDate, Date endDate){
         long days=(endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24);
         return days;
     }
@@ -418,7 +419,7 @@ public class DateUtil {
 	 * @return
 	 * @throws ParseException
 	 */
-	public static long daysOfTwo(String startDate, String endDate, String formate) throws ParseException{
+	public static Long daysOfTwo(String startDate, String endDate, String formate) throws ParseException{
 		SimpleDateFormat sdf=new SimpleDateFormat(formate);
 		Date fDate=sdf.parse(startDate);
         Date oDate=sdf.parse(endDate);
@@ -447,6 +448,29 @@ public class DateUtil {
         c.add(Calendar.DAY_OF_MONTH, days);
         Date aDay = c.getTime();  
         return f.format(aDay);
+	}
+	/**
+	 * 计算当前日期加天数后的日期
+	 * @param date 当前日期
+	 * @param days 天数（可负）
+	 * @param formate 日期格式(默认yyyyMMdd)
+	 * @return
+	 * @throws ParseException
+	 */
+	public static String addWeeks(String date, int weeks, String formate) throws ParseException{
+		if (StringUtil.isEmpty(date)) {
+			return "";
+		}
+		if (StringUtil.isEmpty(formate)) {
+			formate = "yyyyMMdd";
+		}
+		SimpleDateFormat f = new SimpleDateFormat(formate);
+		Date day = f.parse(date);
+		Calendar c = Calendar.getInstance();
+		c.setTime(day);
+		c.add(Calendar.WEEK_OF_MONTH, weeks);
+		Date aDay = c.getTime();
+		return f.format(aDay);
 	}
 
 	/**

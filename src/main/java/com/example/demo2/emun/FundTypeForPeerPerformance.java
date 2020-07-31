@@ -1,4 +1,4 @@
-package com.example.demo2.dto;
+package com.example.demo2.emun;
 
 import java.util.ArrayList;
 import java.util.List;

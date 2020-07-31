@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo2.mapper.ChinamfperformanceMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo2.domain.Chinamfperformance">
+    <!--@mbg.generated-->
+    <!--@Table chinamfperformance-->
+    <id column="OBJECT_ID" property="objectId" />
+    <result column="S_INFO_WINDCODE" property="sInfoWindcode" />
+    <result column="TRADE_DT" property="tradeDt" />
+    <result column="F_AVGRETURN_THISWEEK" property="fAvgreturnThisweek" />
+    <result column="F_AVGRETURN_THISMONTH" property="fAvgreturnThismonth" />
+    <result column="F_AVGRETURN_THISQUARTER" property="fAvgreturnThisquarter" />
+    <result column="F_AVGRETURN_WEEK" property="fAvgreturnWeek" />
+    <result column="F_AVGRETURN_MONTH" property="fAvgreturnMonth" />
+    <result column="F_AVGRETURN_QUARTER" property="fAvgreturnQuarter" />
+    <result column="F_AVGRETURN_HALFYEAR" property="fAvgreturnHalfyear" />
+    <result column="F_AVGRETURN_THISYEAR" property="fAvgreturnThisyear" />
+    <result column="F_AVGRETURN_YEAR" property="fAvgreturnYear" />
+    <result column="F_AVGRETURN_TWOYEAR" property="fAvgreturnTwoyear" />
+    <result column="F_AVGRETURN_THREEYEAR" property="fAvgreturnThreeyear" />
+    <result column="F_AVGRETURN_FOURYEAR" property="fAvgreturnFouryear" />
+    <result column="F_AVGRETURN_FIVEYEAR" property="fAvgreturnFiveyear" />
+    <result column="F_AVGRETURN_SIXYEAR" property="fAvgreturnSixyear" />
+    <result column="F_AVGRETURN_SINCEFOUND" property="fAvgreturnSincefound" />
+    <result column="F_ANNUALYEILD" property="fAnnualyeild" />
+    <result column="F_TRACKDEV_THISDAY" property="fTrackdevThisday" />
+    <result column="F_SFRETURN_THISYEAR" property="fSfreturnThisyear" />
+    <result column="F_SFRANK_THISYEAR" property="fSfrankThisyear" />
+    <result column="F_SFRETURN_RECENTQUARTER" property="fSfreturnRecentquarter" />
+    <result column="F_SFRANK_RECENTQUARTER" property="fSfrankRecentquarter" />
+    <result column="F_SFRETURN_RECENTHALFYEAR" property="fSfreturnRecenthalfyear" />
+    <result column="F_SFRANK_RECENTHALFYEAR" property="fSfrankRecenthalfyear" />
+    <result column="F_SFRETURN_RECENTYEAR" property="fSfreturnRecentyear" />
+    <result column="F_SFRANK_RECENTYEAR" property="fSfrankRecentyear" />
+    <result column="F_SFRETURN_RECENTTWOYEAR" property="fSfreturnRecenttwoyear" />
+    <result column="F_SFRANK_RECENTTWOYEAR" property="fSfrankRecenttwoyear" />
+    <result column="F_SFRETURN_RECENTTHREEYEAR" property="fSfreturnRecentthreeyear" />
+    <result column="F_SFRANK_RECENTTHREEYEAR" property="fSfrankRecentthreeyear" />
+    <result column="F_SFRETURN_RECENTFIVEYEAR" property="fSfreturnRecentfiveyear" />
+    <result column="F_SFRANK_RECENTFIVEYEAR" property="fSfrankRecentfiveyear" />
+    <result column="F_SFRETURN_SINCEFOUND" property="fSfreturnSincefound" />
+    <result column="F_SFRANK_SINCEFOUND" property="fSfrankSincefound" />
+    <result column="F_SFANNUALYEILD" property="fSfannualyeild" />
+    <result column="F_SFRANK_ANNUALYEILD" property="fSfrankAnnualyeild" />
+    <result column="F_STDARDDEV_HALFYEAR" property="fStdarddevHalfyear" />
+    <result column="F_STDARDDEV_YEAR" property="fStdarddevYear" />
+    <result column="F_STDARDDEV_TWOYEAR" property="fStdarddevTwoyear" />
+    <result column="F_STDARDDEV_THREEYEAR" property="fStdarddevThreeyear" />
+    <result column="F_STDARDDEV_FIVEYEAR" property="fStdarddevFiveyear" />
+    <result column="F_STDARDDEV_SINCEFOUND" property="fStdarddevSincefound" />
+    <result column="F_SHARPRATIO_HALFYEAR" property="fSharpratioHalfyear" />
+    <result column="F_SHARPRATIO_YEAR" property="fSharpratioYear" />
+    <result column="F_SHARPRATIO_TWOYEAR" property="fSharpratioTwoyear" />
+    <result column="F_SHARPRATIO_THREEYEAR" property="fSharpratioThreeyear" />
+    <result column="F_SFRETURN_RECENTWEEK" property="fSfreturnRecentweek" />
+    <result column="F_SFRANK_RECENTWEEK" property="fSfrankRecentweek" />
+    <result column="F_SFRETURN_RECENTMONTH" property="fSfreturnRecentmonth" />
+    <result column="F_SFRANK_RECENTMONTH" property="fSfrankRecentmonth" />
+    <result column="F_FUNDTYPE" property="fFundtype" />
+    <result column="F_AVGRETURN_DAY" property="fAvgreturnDay" />
+    <result column="F_SFRANK_THISYEART" property="fSfrankThisyeart" />
+    <result column="F_SFRANK_RECENTQUARTERT" property="fSfrankRecentquartert" />
+    <result column="F_SFRANK_RECENTHALFYEART" property="fSfrankRecenthalfyeart" />
+    <result column="F_SFRANK_RECENTYEART" property="fSfrankRecentyeart" />
+    <result column="F_SFRANK_RECENTTWOYEART" property="fSfrankRecenttwoyeart" />
+    <result column="F_SFRANK_RECENTTHREEYEART" property="fSfrankRecentthreeyeart" />
+    <result column="F_SFRANK_RECENTFIVEYEART" property="fSfrankRecentfiveyeart" />
+    <result column="F_SFRANK_SINCEFOUNDT" property="fSfrankSincefoundt" />
+    <result column="F_SFRANK_ANNUALYEILDT" property="fSfrankAnnualyeildt" />
+    <result column="F_SFRANK_RECENTWEEKT" property="fSfrankRecentweekt" />
+    <result column="F_SFRANK_RECENTMONTHT" property="fSfrankRecentmontht" />
+    <result column="F_BETA_6M" property="fBeta6m" />
+    <result column="F_BETA_1Y" property="fBeta1y" />
+    <result column="F_BETA_2Y" property="fBeta2y" />
+    <result column="F_BETA_3Y" property="fBeta3y" />
+    <result column="F_ALPHA_6M" property="fAlpha6m" />
+    <result column="F_ALPHA_1Y" property="fAlpha1y" />
+    <result column="F_ALPHA_2Y" property="fAlpha2y" />
+    <result column="F_ALPHA_3Y" property="fAlpha3y" />
+    <result column="F_SFRETURN_DAY" property="fSfreturnDay" />
+    <result column="F_SFRANK_DAY" property="fSfrankDay" />
+    <result column="F_SFRANK_DAYT" property="fSfrankDayt" />
+    <result column="F_ANNUALYEILD_SINCEFOUND" property="fAnnualyeildSincefound" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    OBJECT_ID, S_INFO_WINDCODE, TRADE_DT, F_AVGRETURN_THISWEEK, F_AVGRETURN_THISMONTH, 
+    F_AVGRETURN_THISQUARTER, F_AVGRETURN_WEEK, F_AVGRETURN_MONTH, F_AVGRETURN_QUARTER, 
+    F_AVGRETURN_HALFYEAR, F_AVGRETURN_THISYEAR, F_AVGRETURN_YEAR, F_AVGRETURN_TWOYEAR,
+    F_AVGRETURN_THREEYEAR, F_AVGRETURN_FOURYEAR, F_AVGRETURN_FIVEYEAR, F_AVGRETURN_SIXYEAR, 
+    F_AVGRETURN_SINCEFOUND, F_ANNUALYEILD, F_TRACKDEV_THISDAY, F_SFRETURN_THISYEAR, F_SFRANK_THISYEAR, 
+    F_SFRETURN_RECENTQUARTER, F_SFRANK_RECENTQUARTER, F_SFRETURN_RECENTHALFYEAR, F_SFRANK_RECENTHALFYEAR, 
+    F_SFRETURN_RECENTYEAR, F_SFRANK_RECENTYEAR, F_SFRETURN_RECENTTWOYEAR, F_SFRANK_RECENTTWOYEAR, 
+    F_SFRETURN_RECENTTHREEYEAR, F_SFRANK_RECENTTHREEYEAR, F_SFRETURN_RECENTFIVEYEAR, 
+    F_SFRANK_RECENTFIVEYEAR, F_SFRETURN_SINCEFOUND, F_SFRANK_SINCEFOUND, F_SFANNUALYEILD, 
+    F_SFRANK_ANNUALYEILD, F_STDARDDEV_HALFYEAR, F_STDARDDEV_YEAR, F_STDARDDEV_TWOYEAR, 
+    F_STDARDDEV_THREEYEAR, F_STDARDDEV_FIVEYEAR, F_STDARDDEV_SINCEFOUND, F_SHARPRATIO_HALFYEAR, 
+    F_SHARPRATIO_YEAR, F_SHARPRATIO_TWOYEAR, F_SHARPRATIO_THREEYEAR, F_SFRETURN_RECENTWEEK, 
+    F_SFRANK_RECENTWEEK, F_SFRETURN_RECENTMONTH, F_SFRANK_RECENTMONTH, F_FUNDTYPE, F_AVGRETURN_DAY, 
+    F_SFRANK_THISYEART, F_SFRANK_RECENTQUARTERT, F_SFRANK_RECENTHALFYEART, F_SFRANK_RECENTYEART, 
+    F_SFRANK_RECENTTWOYEART, F_SFRANK_RECENTTHREEYEART, F_SFRANK_RECENTFIVEYEART, F_SFRANK_SINCEFOUNDT, 
+    F_SFRANK_ANNUALYEILDT, F_SFRANK_RECENTWEEKT, F_SFRANK_RECENTMONTHT, F_BETA_6M, F_BETA_1Y, 
+    F_BETA_2Y, F_BETA_3Y, F_ALPHA_6M, F_ALPHA_1Y, F_ALPHA_2Y, F_ALPHA_3Y, F_SFRETURN_DAY, 
+    F_SFRANK_DAY, F_SFRANK_DAYT, F_ANNUALYEILD_SINCEFOUND
+  </sql>
+  <select id="selectByFundCode" parameterType="com.example.demo2.domain.Chinamfperformance" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from
+    wind_user.chinamfperformance
+    <where>
+      <if test = "fundCode != null and fundCode != '' ">
+        s_info_windcode like #{fundCode}
+      </if>
+      and trade_dt = (select max(trade_dt) from wind_user.chinamfperformance
+      where s_info_windcode like #{fundCode})
+    </where>
+    limit 1
+  </select>
+  <select id="selectNewByFundCode" parameterType="com.example.demo2.domain.Chinamfperformance" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from
+    wind_user.chinamfperformance
+    <where>
+      <if test = "fundCode != null and fundCode != '' ">
+        s_info_windcode like #{fundCode}
+      </if>
+      and trade_dt = (select max(trade_dt) from wind_user.chinamfperformance
+      where s_info_windcode like #{fundCode} and
+      <if test="tradeDt != null">
+        AND trade_dt &lt; #{tradeDt}
+      </if>)
+    </where>
+    limit 1
+  </select>
+</mapper>
