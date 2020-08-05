@@ -1,0 +1,12 @@
+<property name="scriptDsl">
+    <![CDATA[
+        {
+          "query": {
+            "match": {
+              "username":#[name]
+            }
+          },
+           "size":10
+        }
+    ]]>
+</property>

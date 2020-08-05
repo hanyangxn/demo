@@ -3,6 +3,14 @@ server:
 spring:
   application:
     name: demo2
+    #springboot maven项目ESBboss配置文件
+  elasticsearch:
+    bboss:
+      elasticsearch:
+        rest:
+          hostNames: 127.0.0.1:9200
+
+
   messages:
     basename: i18n/messages
   datasource:
@@ -17,4 +25,10 @@ spring:
 #mybatis配置
 mybatis:
     mapper-locations: classpath:mapper/**.xml
+
+
+
+
+##springboot maven项目ESBboss配置文件
+#spring.elasticsearch.bboss.elasticsearch.rest.hostNames=127.0.0.1:9200
 

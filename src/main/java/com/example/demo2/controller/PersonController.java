@@ -103,6 +103,7 @@ public class PersonController {
         }
         //获取文件名
         int filesize = file.getOriginalFilename().length();
+        String originalFilename = file.getOriginalFilename();
         String fileName = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("\\") + 1, filesize);
         //验证文件名是否合格
         if (!ExcelImportUtils.validateExcel(fileName)) {

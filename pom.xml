@@ -98,6 +98,12 @@
             <artifactId>poi-ooxml</artifactId>
             <version>3.9</version>
         </dependency>
+        <!--ElasticsearchBboss启动类引入-->
+        <dependency>
+            <groupId>com.bbossgroups.plugins</groupId>
+            <artifactId>bboss-elasticsearch-spring-boot-starter</artifactId>
+            <version>5.7.5</version>
+        </dependency>
 
 
     </dependencies>

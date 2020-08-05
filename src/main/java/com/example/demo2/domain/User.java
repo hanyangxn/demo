@@ -4,6 +4,15 @@ public class User {
     int id;
     String username;
     String password;
+    int age;
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 
     public int getId() {
         return id;
