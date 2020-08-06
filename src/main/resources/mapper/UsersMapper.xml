@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo2.mapper.UsersMapper">
-  <resultMap id="BaseResultMap" type="com.example.demo2.domain.Users">
+<mapper namespace="com.hy.demo.mapper.UsersMapper">
+  <resultMap id="BaseResultMap" type="com.hy.demo.domain.Users">
     <!--@mbg.generated-->
     <!--@Table users-->
     <id column="uid" jdbcType="INTEGER" property="uid" />
@@ -25,14 +25,14 @@
     delete from users
     where `uid` = #{uid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="uid" keyProperty="uid" parameterType="com.example.demo2.domain.Users" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="uid" keyProperty="uid" parameterType="com.hy.demo.domain.Users" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into users (username, gender, age
       )
     values (#{username,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" keyColumn="uid" keyProperty="uid" parameterType="com.example.demo2.domain.Users" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="uid" keyProperty="uid" parameterType="com.hy.demo.domain.Users" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into users
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -58,7 +58,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo2.domain.Users">
+  <update id="updateByPrimaryKeySelective" parameterType="com.hy.demo.domain.Users">
     <!--@mbg.generated-->
     update users
     <set>
@@ -74,7 +74,7 @@
     </set>
     where `uid` = #{uid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.demo2.domain.Users">
+  <update id="updateByPrimaryKey" parameterType="com.hy.demo.domain.Users">
     <!--@mbg.generated-->
     update users
     set username = #{username,jdbcType=VARCHAR},

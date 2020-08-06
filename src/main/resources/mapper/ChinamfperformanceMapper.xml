@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo2.mapper.ChinamfperformanceMapper">
-  <resultMap id="BaseResultMap" type="com.example.demo2.domain.Chinamfperformance">
+<mapper namespace="com.hy.demo.mapper.ChinamfperformanceMapper">
+  <resultMap id="BaseResultMap" type="com.hy.demo.domain.Chinamfperformance">
     <!--@mbg.generated-->
     <!--@Table chinamfperformance-->
     <id column="OBJECT_ID" property="objectId" />
@@ -103,7 +103,7 @@
     F_BETA_2Y, F_BETA_3Y, F_ALPHA_6M, F_ALPHA_1Y, F_ALPHA_2Y, F_ALPHA_3Y, F_SFRETURN_DAY, 
     F_SFRANK_DAY, F_SFRANK_DAYT, F_ANNUALYEILD_SINCEFOUND
   </sql>
-  <select id="selectByFundCode" parameterType="com.example.demo2.domain.Chinamfperformance" resultMap="BaseResultMap">
+  <select id="selectByFundCode" parameterType="com.hy.demo.domain.Chinamfperformance" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from
@@ -117,7 +117,7 @@
     </where>
     limit 1
   </select>
-  <select id="selectNewByFundCode" parameterType="com.example.demo2.domain.Chinamfperformance" resultMap="BaseResultMap">
+  <select id="selectNewByFundCode" parameterType="com.hy.demo.domain.Chinamfperformance" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from
