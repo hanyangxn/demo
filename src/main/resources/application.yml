@@ -15,7 +15,7 @@ spring:
     basename: i18n/messages
   datasource:
     # TEST环境
-    url: jdbc:mysql://localhost:3306/test
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver

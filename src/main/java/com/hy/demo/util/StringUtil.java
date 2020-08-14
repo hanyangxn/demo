@@ -45,7 +45,7 @@ public class StringUtil {
 	 * @param separator 分隔符。
 	 * @param trim 是否对每个分隔的字符串执行trim操作。
 	 * @return 分隔字符串组成的数组。
-	 * @see com.chinaamc.common.utils.StringUtil#split(String, char, boolean)
+	 * @see (String, char, boolean)
 	 * @see String#split(String)
 	 */
 	public static String[] split(String string, String separator, boolean trim) {
@@ -658,7 +658,7 @@ public class StringUtil {
 
 	/**
 	 * 验证数组中的字符串的合法性。字符必须由字母，数字和下划线组成，其中首字符不能是数字。如果非法将抛出异常。
-	 * @param name 需要被验证的数组对象。
+	 * @param
 	 */
 	public static void checkArray(String[] strings) {
 		for (String string : strings) {

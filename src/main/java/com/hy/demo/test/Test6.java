@@ -12,7 +12,7 @@ public class Test6 {
     public static void main(String[] args) throws ParseException, ManagementCockpitException {
 //        String s = DateUtil.addWeeks(DateUtil.now("yyyyMMdd"), -1, "yyyyMMdd");
 //        System.out.println(s);
-        List<Map<String, ?>> thirdRankingList = new ArrayList<>();
+/*        List<Map<String, ?>> thirdRankingList = new ArrayList<>();
         Map<String, String> thirdRankingMap = new HashMap<>();
         Map<String, BigDecimal> thirdRankingMap2 = new HashMap<>();
         thirdRankingMap.put("qqq","www");
@@ -20,7 +20,9 @@ public class Test6 {
         thirdRankingList.add(thirdRankingMap);
         thirdRankingList.add(thirdRankingMap2);
         String s = JSONObject.toJSONString(thirdRankingList);
-        System.out.println(s);
+        System.out.println(s);*/
+
+
 
         TT tt = new TT();
 
