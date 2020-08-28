@@ -3,10 +3,7 @@ package com.hy.demo.test;
 import com.hy.demo.dto.UserDto;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
@@ -23,6 +20,8 @@ public class Test01 {
         List<UserDto> userDtoList = new ArrayList<>();
         userDtoList.add(userDto);
         userDtoList.add(userDto2);
+       // Collections.sort(userDtoList,(a,b)->a.getAge().compareTo(b.getAge()));
+        // 与下面相等
         userDtoList = userDtoList.stream().sorted(Comparator.comparing(UserDto::getAge)).collect(Collectors.toList());
         System.out.println(userDtoList);
 

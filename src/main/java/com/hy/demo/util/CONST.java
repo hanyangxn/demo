@@ -25,6 +25,7 @@ public abstract class CONST {
 	public static final String WIND_RANKING_NOT_SUPORT_EXCEPTION = "1018";
 	public static final String FUND_MANAGER_EXCEPTION = "1019";
     public static final String ASSET_ALLOCATION_EXCEPTION = "1020";
+	public static final String EXCEL_EXCEPTION = "1020";
 	public static final String RUNTIME_EXCEPTION = "1111";
 	public static final String LANG_ZH = "zh";
 	public static final String RGN_CN = "CN";

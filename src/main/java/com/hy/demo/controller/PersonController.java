@@ -1,17 +1,21 @@
 package com.hy.demo.controller;
 
 import com.hy.demo.domain.Person;
-import com.hy.demo.util.ExcelImportUtils;
-import com.hy.demo.util.ResultDto;
+import com.hy.demo.emun.PositionType;
+import com.hy.demo.exception.ManagementCockpitException;
+import com.hy.demo.service.impl.ExcelService;
+import com.hy.demo.util.*;
 import com.hy.demo.service.PersonService;
-import com.hy.demo.util.PagedResult;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ClassUtils;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,14 +23,17 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.util.Date;
+import java.util.*;
 
 
 @RestController
 public class PersonController {
-
+    final static Logger logger = LoggerFactory.getLogger(TestController.class);
     @Autowired
     private PersonService personService;
+
+    @Autowired
+    private ExcelService excelService;
 
     @RequestMapping("/person")
     public ResultDto<PagedResult<Person>> test(Integer pageNo, Integer pageSize) {
@@ -35,55 +42,13 @@ public class PersonController {
 
 
     @RequestMapping("/download")
-    public void downloadKB(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String agent = request.getHeader("USER-AGENT").toLowerCase();
-        System.out.println("=================================>" + agent);
-        response.setContentType("application/vnd.ms-excel");
-        String outFileName = "测试模板";
-        String filenameSend = "";
-        if (agent != null && agent.toLowerCase().indexOf("firefox") > 0) {
-            filenameSend = "=?UTF-8?B?" + (new String(org.apache.commons.codec.binary.Base64.encodeBase64(outFileName.getBytes("UTF-8")))) + "?=";
-        } else {
-            filenameSend = java.net.URLEncoder.encode(outFileName, "UTF-8");
-        }
-        if (agent.contains("firefox")) {
-            response.setCharacterEncoding("utf-8");
-            response.setHeader("content-disposition", "attachment;filename=" + filenameSend + ".xlsx");
-        } else {
-            response.setHeader("content-disposition", "attachment;filename=" + filenameSend + ".xlsx");
-        }
-        File file = ResourceUtils.getFile("classpath:excelTemplate/template.xlsx");
-        String fileName = file.getName();
-        Workbook wb = null;
-        InputStream is = null;
+    public void downloadKB(HttpServletRequest request, HttpServletResponse response) {
         try {
-            is = new FileInputStream(file);
-            //根据文件名判断文件是2003版本还是2007版本
-            wb = ExcelImportUtils.getWorkbook(is, fileName);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                is.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            excelService.test(request, response);
+        } catch (ManagementCockpitException e) {
+            logger.error(DateUtil.now("yyyy-MM-dd HH:mm:ss.SSS") + " - Warning of " +
+                    Thread.currentThread().getStackTrace()[1].getMethodName() + ": " + e.getMessage());
         }
-        Sheet sheet = wb.getSheetAt(0);
-        String question = "";
-        String answer = "";
-        question = "你的车呢";
-        answer = "丢了啊";
-        //插入数据到excel
-        Row row = sheet.createRow(0 + 2);//从第三行开始
-        Cell first = row.createCell(0);
-        first.setCellValue(question);
-        Cell second = row.createCell(1);
-        second.setCellValue(answer);
-
-        OutputStream out = response.getOutputStream();
-        wb.write(out);
-
     }
 
     @ResponseBody
