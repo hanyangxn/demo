@@ -1,5 +1,6 @@
 package com.hy.demo.controller;
 
+import com.hy.demo.annotation.SystemLog;
 import com.hy.demo.service.MsgService;
 import com.hy.demo.exception.ManagementCockpitException;
 import com.hy.demo.util.ResultDto;
@@ -24,14 +25,15 @@ public class MsgController {
     private MsgService service;
 
     @RequestMapping("/msg")
+//    @SystemLog
     public ResultDto<?> msg() {
         try {
             return service.test();
         } catch (ManagementCockpitException e) {
             logger.error(e.getCode() + ":" + e.getMessage());
             return ResultUtil.warning(null, e);
-        } catch (Exception e) {
-            return ResultUtil.error(null, e);
+//        } catch (Exception e) {
+//            return ResultUtil.error(null, e);
         }
     }
 }

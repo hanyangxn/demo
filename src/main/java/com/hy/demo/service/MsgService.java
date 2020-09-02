@@ -9,4 +9,5 @@ import com.hy.demo.util.ResultDto;
  */
 public interface MsgService {
     ResultDto<?> test();
+
 }

@@ -22,6 +22,7 @@ public class MsgServiceImpl implements MsgService {
 
     @Override
     public ResultDto<?> test() {
-        throw MsgUtil.warning("1002",msgsrc);
+//        throw MsgUtil.warning("1002",msgsrc);
+        throw new RuntimeException("10010");
     }
 }
